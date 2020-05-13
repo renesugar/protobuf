@@ -33,37 +33,54 @@ class UninterpretedOption extends \Google\Protobuf\Internal\Message
      *
      * Generated from protobuf field <code>optional string identifier_value = 3;</code>
      */
-    private $identifier_value = '';
+    protected $identifier_value = '';
     private $has_identifier_value = false;
     /**
      * Generated from protobuf field <code>optional uint64 positive_int_value = 4;</code>
      */
-    private $positive_int_value = 0;
+    protected $positive_int_value = 0;
     private $has_positive_int_value = false;
     /**
      * Generated from protobuf field <code>optional int64 negative_int_value = 5;</code>
      */
-    private $negative_int_value = 0;
+    protected $negative_int_value = 0;
     private $has_negative_int_value = false;
     /**
      * Generated from protobuf field <code>optional double double_value = 6;</code>
      */
-    private $double_value = 0.0;
+    protected $double_value = 0.0;
     private $has_double_value = false;
     /**
      * Generated from protobuf field <code>optional bytes string_value = 7;</code>
      */
-    private $string_value = '';
+    protected $string_value = '';
     private $has_string_value = false;
     /**
      * Generated from protobuf field <code>optional string aggregate_value = 8;</code>
      */
-    private $aggregate_value = '';
+    protected $aggregate_value = '';
     private $has_aggregate_value = false;
 
-    public function __construct() {
+    /**
+     * Constructor.
+     *
+     * @param array $data {
+     *     Optional. Data for populating the Message object.
+     *
+     *     @type \Google\Protobuf\Internal\UninterpretedOption\NamePart[]|\Google\Protobuf\Internal\RepeatedField $name
+     *     @type string $identifier_value
+     *           The value of the uninterpreted option, in whatever type the tokenizer
+     *           identified it as during parsing. Exactly one of these should be set.
+     *     @type int|string $positive_int_value
+     *     @type int|string $negative_int_value
+     *     @type float $double_value
+     *     @type string $string_value
+     *     @type string $aggregate_value
+     * }
+     */
+    public function __construct($data = NULL) {
         \GPBMetadata\Google\Protobuf\Internal\Descriptor::initOnce();
-        parent::__construct();
+        parent::__construct($data);
     }
 
     /**
@@ -77,12 +94,12 @@ class UninterpretedOption extends \Google\Protobuf\Internal\Message
 
     /**
      * Generated from protobuf field <code>repeated .google.protobuf.UninterpretedOption.NamePart name = 2;</code>
-     * @param \Google\Protobuf\Internal\UninterpretedOption_NamePart[]|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Google\Protobuf\Internal\UninterpretedOption\NamePart[]|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
     public function setName($var)
     {
-        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Google\Protobuf\Internal\UninterpretedOption_NamePart::class);
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Google\Protobuf\Internal\UninterpretedOption\NamePart::class);
         $this->name = $arr;
         $this->has_name = true;
 

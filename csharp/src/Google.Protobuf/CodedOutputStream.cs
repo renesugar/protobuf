@@ -89,7 +89,7 @@ namespace Google.Protobuf
         private CodedOutputStream(byte[] buffer, int offset, int length)
         {
             this.output = null;
-            this.buffer = buffer;
+            this.buffer = ProtoPreconditions.CheckNotNull(buffer, nameof(buffer));
             this.position = offset;
             this.limit = offset + length;
             leaveOpen = true; // Simple way of avoiding trying to dispose of a null reference
@@ -300,6 +300,15 @@ namespace Google.Protobuf
         public void WriteMessage(IMessage value)
         {
             WriteLength(value.CalculateSize());
+            value.WriteTo(this);
+        }
+
+        /// <summary>
+        /// Writes a group, without a tag, to the stream.
+        /// </summary>
+        /// <param name="value">The value to write</param>
+        public void WriteGroup(IMessage value)
+        {
             value.WriteTo(this);
         }
 

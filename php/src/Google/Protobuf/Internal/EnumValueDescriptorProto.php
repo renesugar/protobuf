@@ -20,22 +20,33 @@ class EnumValueDescriptorProto extends \Google\Protobuf\Internal\Message
     /**
      * Generated from protobuf field <code>optional string name = 1;</code>
      */
-    private $name = '';
+    protected $name = '';
     private $has_name = false;
     /**
      * Generated from protobuf field <code>optional int32 number = 2;</code>
      */
-    private $number = 0;
+    protected $number = 0;
     private $has_number = false;
     /**
      * Generated from protobuf field <code>optional .google.protobuf.EnumValueOptions options = 3;</code>
      */
-    private $options = null;
+    protected $options = null;
     private $has_options = false;
 
-    public function __construct() {
+    /**
+     * Constructor.
+     *
+     * @param array $data {
+     *     Optional. Data for populating the Message object.
+     *
+     *     @type string $name
+     *     @type int $number
+     *     @type \Google\Protobuf\Internal\EnumValueOptions $options
+     * }
+     */
+    public function __construct($data = NULL) {
         \GPBMetadata\Google\Protobuf\Internal\Descriptor::initOnce();
-        parent::__construct();
+        parent::__construct($data);
     }
 
     /**

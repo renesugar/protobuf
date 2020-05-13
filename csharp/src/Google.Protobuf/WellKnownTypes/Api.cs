@@ -43,10 +43,10 @@ namespace Google.Protobuf.WellKnownTypes {
             "cm90b2J1Zi5XZWxsS25vd25UeXBlc2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.SourceContextReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TypeReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.WellKnownTypes.Api), global::Google.Protobuf.WellKnownTypes.Api.Parser, new[]{ "Name", "Methods", "Options", "Version", "SourceContext", "Mixins", "Syntax" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.WellKnownTypes.Method), global::Google.Protobuf.WellKnownTypes.Method.Parser, new[]{ "Name", "RequestTypeUrl", "RequestStreaming", "ResponseTypeUrl", "ResponseStreaming", "Options", "Syntax" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.WellKnownTypes.Mixin), global::Google.Protobuf.WellKnownTypes.Mixin.Parser, new[]{ "Name", "Root" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.WellKnownTypes.Api), global::Google.Protobuf.WellKnownTypes.Api.Parser, new[]{ "Name", "Methods", "Options", "Version", "SourceContext", "Mixins", "Syntax" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.WellKnownTypes.Method), global::Google.Protobuf.WellKnownTypes.Method.Parser, new[]{ "Name", "RequestTypeUrl", "RequestStreaming", "ResponseTypeUrl", "ResponseStreaming", "Options", "Syntax" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.WellKnownTypes.Mixin), global::Google.Protobuf.WellKnownTypes.Mixin.Parser, new[]{ "Name", "Root" }, null, null, null, null)
           }));
     }
     #endregion
@@ -64,7 +64,7 @@ namespace Google.Protobuf.WellKnownTypes {
   /// this message itself. See https://cloud.google.com/apis/design/glossary for
   /// detailed terminology.
   /// </summary>
-  public sealed partial class Api : pb::IMessage<Api> {
+  public sealed partial class Api : pb::IMessage<Api>, pb::IBufferMessage {
     private static readonly pb::MessageParser<Api> _parser = new pb::MessageParser<Api>(() => new Api());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -93,7 +93,7 @@ namespace Google.Protobuf.WellKnownTypes {
       methods_ = other.methods_.Clone();
       options_ = other.options_.Clone();
       version_ = other.version_;
-      SourceContext = other.sourceContext_ != null ? other.SourceContext.Clone() : null;
+      sourceContext_ = other.sourceContext_ != null ? other.sourceContext_.Clone() : null;
       mixins_ = other.mixins_.Clone();
       syntax_ = other.syntax_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -207,7 +207,7 @@ namespace Google.Protobuf.WellKnownTypes {
 
     /// <summary>Field number for the "syntax" field.</summary>
     public const int SyntaxFieldNumber = 7;
-    private global::Google.Protobuf.WellKnownTypes.Syntax syntax_ = 0;
+    private global::Google.Protobuf.WellKnownTypes.Syntax syntax_ = global::Google.Protobuf.WellKnownTypes.Syntax.Proto2;
     /// <summary>
     /// The source syntax of the service.
     /// </summary>
@@ -251,7 +251,7 @@ namespace Google.Protobuf.WellKnownTypes {
       if (Version.Length != 0) hash ^= Version.GetHashCode();
       if (sourceContext_ != null) hash ^= SourceContext.GetHashCode();
       hash ^= mixins_.GetHashCode();
-      if (Syntax != 0) hash ^= Syntax.GetHashCode();
+      if (Syntax != global::Google.Protobuf.WellKnownTypes.Syntax.Proto2) hash ^= Syntax.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -280,7 +280,7 @@ namespace Google.Protobuf.WellKnownTypes {
         output.WriteMessage(SourceContext);
       }
       mixins_.WriteTo(output, _repeated_mixins_codec);
-      if (Syntax != 0) {
+      if (Syntax != global::Google.Protobuf.WellKnownTypes.Syntax.Proto2) {
         output.WriteRawTag(56);
         output.WriteEnum((int) Syntax);
       }
@@ -304,7 +304,7 @@ namespace Google.Protobuf.WellKnownTypes {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(SourceContext);
       }
       size += mixins_.CalculateSize(_repeated_mixins_codec);
-      if (Syntax != 0) {
+      if (Syntax != global::Google.Protobuf.WellKnownTypes.Syntax.Proto2) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Syntax);
       }
       if (_unknownFields != null) {
@@ -328,12 +328,12 @@ namespace Google.Protobuf.WellKnownTypes {
       }
       if (other.sourceContext_ != null) {
         if (sourceContext_ == null) {
-          sourceContext_ = new global::Google.Protobuf.WellKnownTypes.SourceContext();
+          SourceContext = new global::Google.Protobuf.WellKnownTypes.SourceContext();
         }
         SourceContext.MergeFrom(other.SourceContext);
       }
       mixins_.Add(other.mixins_);
-      if (other.Syntax != 0) {
+      if (other.Syntax != global::Google.Protobuf.WellKnownTypes.Syntax.Proto2) {
         Syntax = other.Syntax;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -341,22 +341,27 @@ namespace Google.Protobuf.WellKnownTypes {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+      input.ReadRawMessage(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
           default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
             Name = input.ReadString();
             break;
           }
           case 18: {
-            methods_.AddEntriesFrom(input, _repeated_methods_codec);
+            methods_.AddEntriesFrom(ref input, _repeated_methods_codec);
             break;
           }
           case 26: {
-            options_.AddEntriesFrom(input, _repeated_options_codec);
+            options_.AddEntriesFrom(ref input, _repeated_options_codec);
             break;
           }
           case 34: {
@@ -365,17 +370,17 @@ namespace Google.Protobuf.WellKnownTypes {
           }
           case 42: {
             if (sourceContext_ == null) {
-              sourceContext_ = new global::Google.Protobuf.WellKnownTypes.SourceContext();
+              SourceContext = new global::Google.Protobuf.WellKnownTypes.SourceContext();
             }
-            input.ReadMessage(sourceContext_);
+            input.ReadMessage(SourceContext);
             break;
           }
           case 50: {
-            mixins_.AddEntriesFrom(input, _repeated_mixins_codec);
+            mixins_.AddEntriesFrom(ref input, _repeated_mixins_codec);
             break;
           }
           case 56: {
-            syntax_ = (global::Google.Protobuf.WellKnownTypes.Syntax) input.ReadEnum();
+            Syntax = (global::Google.Protobuf.WellKnownTypes.Syntax) input.ReadEnum();
             break;
           }
         }
@@ -387,7 +392,7 @@ namespace Google.Protobuf.WellKnownTypes {
   /// <summary>
   /// Method represents a method of an API interface.
   /// </summary>
-  public sealed partial class Method : pb::IMessage<Method> {
+  public sealed partial class Method : pb::IMessage<Method>, pb::IBufferMessage {
     private static readonly pb::MessageParser<Method> _parser = new pb::MessageParser<Method>(() => new Method());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -512,7 +517,7 @@ namespace Google.Protobuf.WellKnownTypes {
 
     /// <summary>Field number for the "syntax" field.</summary>
     public const int SyntaxFieldNumber = 7;
-    private global::Google.Protobuf.WellKnownTypes.Syntax syntax_ = 0;
+    private global::Google.Protobuf.WellKnownTypes.Syntax syntax_ = global::Google.Protobuf.WellKnownTypes.Syntax.Proto2;
     /// <summary>
     /// The source syntax of this method.
     /// </summary>
@@ -556,7 +561,7 @@ namespace Google.Protobuf.WellKnownTypes {
       if (ResponseTypeUrl.Length != 0) hash ^= ResponseTypeUrl.GetHashCode();
       if (ResponseStreaming != false) hash ^= ResponseStreaming.GetHashCode();
       hash ^= options_.GetHashCode();
-      if (Syntax != 0) hash ^= Syntax.GetHashCode();
+      if (Syntax != global::Google.Protobuf.WellKnownTypes.Syntax.Proto2) hash ^= Syntax.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -591,7 +596,7 @@ namespace Google.Protobuf.WellKnownTypes {
         output.WriteBool(ResponseStreaming);
       }
       options_.WriteTo(output, _repeated_options_codec);
-      if (Syntax != 0) {
+      if (Syntax != global::Google.Protobuf.WellKnownTypes.Syntax.Proto2) {
         output.WriteRawTag(56);
         output.WriteEnum((int) Syntax);
       }
@@ -619,7 +624,7 @@ namespace Google.Protobuf.WellKnownTypes {
         size += 1 + 1;
       }
       size += options_.CalculateSize(_repeated_options_codec);
-      if (Syntax != 0) {
+      if (Syntax != global::Google.Protobuf.WellKnownTypes.Syntax.Proto2) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Syntax);
       }
       if (_unknownFields != null) {
@@ -649,7 +654,7 @@ namespace Google.Protobuf.WellKnownTypes {
         ResponseStreaming = other.ResponseStreaming;
       }
       options_.Add(other.options_);
-      if (other.Syntax != 0) {
+      if (other.Syntax != global::Google.Protobuf.WellKnownTypes.Syntax.Proto2) {
         Syntax = other.Syntax;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -657,11 +662,16 @@ namespace Google.Protobuf.WellKnownTypes {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+      input.ReadRawMessage(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
           default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
             Name = input.ReadString();
@@ -684,11 +694,11 @@ namespace Google.Protobuf.WellKnownTypes {
             break;
           }
           case 50: {
-            options_.AddEntriesFrom(input, _repeated_options_codec);
+            options_.AddEntriesFrom(ref input, _repeated_options_codec);
             break;
           }
           case 56: {
-            syntax_ = (global::Google.Protobuf.WellKnownTypes.Syntax) input.ReadEnum();
+            Syntax = (global::Google.Protobuf.WellKnownTypes.Syntax) input.ReadEnum();
             break;
           }
         }
@@ -777,7 +787,7 @@ namespace Google.Protobuf.WellKnownTypes {
   ///       ...
   ///     }
   /// </summary>
-  public sealed partial class Mixin : pb::IMessage<Mixin> {
+  public sealed partial class Mixin : pb::IMessage<Mixin>, pb::IBufferMessage {
     private static readonly pb::MessageParser<Mixin> _parser = new pb::MessageParser<Mixin>(() => new Mixin());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -921,11 +931,16 @@ namespace Google.Protobuf.WellKnownTypes {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+      input.ReadRawMessage(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
           default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
             Name = input.ReadString();

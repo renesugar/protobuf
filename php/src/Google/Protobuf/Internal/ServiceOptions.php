@@ -23,7 +23,7 @@ class ServiceOptions extends \Google\Protobuf\Internal\Message
      *
      * Generated from protobuf field <code>optional bool deprecated = 33 [default = false];</code>
      */
-    private $deprecated = false;
+    protected $deprecated = false;
     private $has_deprecated = false;
     /**
      * The parser stores options it doesn't recognize here. See above.
@@ -33,9 +33,24 @@ class ServiceOptions extends \Google\Protobuf\Internal\Message
     private $uninterpreted_option;
     private $has_uninterpreted_option = false;
 
-    public function __construct() {
+    /**
+     * Constructor.
+     *
+     * @param array $data {
+     *     Optional. Data for populating the Message object.
+     *
+     *     @type bool $deprecated
+     *           Is this service deprecated?
+     *           Depending on the target platform, this can emit Deprecated annotations
+     *           for the service, or it will be completely ignored; in the very least,
+     *           this is a formalization for deprecating services.
+     *     @type \Google\Protobuf\Internal\UninterpretedOption[]|\Google\Protobuf\Internal\RepeatedField $uninterpreted_option
+     *           The parser stores options it doesn't recognize here. See above.
+     * }
+     */
+    public function __construct($data = NULL) {
         \GPBMetadata\Google\Protobuf\Internal\Descriptor::initOnce();
-        parent::__construct();
+        parent::__construct($data);
     }
 
     /**
